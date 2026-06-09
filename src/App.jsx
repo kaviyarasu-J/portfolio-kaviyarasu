@@ -12,43 +12,57 @@ import manifestoImg1 from './assets/manifesto-1.png';
 import manifestoImg2 from './assets/manifesto-2.png';
 import manifestoImg3 from './assets/manifesto-3.png';
 import manifestoImg4 from './assets/manifesto-4.png';
-import { certifications, education, experience, profile, projects, skills } from './data/portfolio';
+import { certifications, education, experience, featuredProjects, profile, projects, skills } from './data/portfolio';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const accent = '#e0ff00';
 
 const manifesto = [
-  ['01 / Frontend', 'Interactive', 'Interfaces', manifestoImg1],
-  ['02 / Backend', 'Scalable', 'Workflows', manifestoImg2],
-  ['03 / Cloud', 'Azure', 'Systems', manifestoImg3],
-  ['04 / AI', 'Model', 'Experiences', manifestoImg4],
+  {
+    number: '01 / Frontend',
+    title: 'Interactive Interfaces',
+    desc: 'Built dynamic dashboards, workflows and AI-driven UI experiences.',
+    img: manifestoImg1,
+  },
+  {
+    number: '02 / Backend',
+    title: 'Scalable Workflows',
+    desc: 'Developed workflow-based backend systems with Flask and FastAPI.',
+    img: manifestoImg2,
+  },
+  {
+    number: '03 / Cloud',
+    title: 'Azure Systems',
+    desc: 'Worked with Azure Functions, APIM and cloud-based deployments.',
+    img: manifestoImg3,
+  },
+  {
+    number: '04 / AI',
+    title: 'AI Product Integration',
+    desc: 'Integrated LLM outputs into real-world business workflows.',
+    img: manifestoImg4,
+  },
 ];
 
 const differentiators = [
   {
-    label: 'Modern Era',
-    titleA: 'AI Model',
-    titleB: 'Integration',
-    desc: 'Handling model responses and transforming JSON outputs into structured, usable product experiences.',
+    label: '01 / Outcomes',
+    titleA: 'AI WORKFLOW',
+    titleB: 'AUTOMATION',
+    desc: 'Reduced manual underwriting effort by 80–90% through LLM-powered workflow automation and structured output pipelines.',
   },
   {
-    label: 'Product Flow',
-    titleA: 'Angular',
-    titleB: 'Dashboards',
-    desc: 'Building dynamic dashboards, forms, and user workflows for real application environments.',
+    label: '02 / Outcomes',
+    titleA: 'SCALABLE PLATFORM',
+    titleB: 'SYSTEMS',
+    desc: 'Built configurable workflow systems and centralized platforms supporting multiple applications.',
   },
   {
-    label: 'Backend',
-    titleA: 'Python',
-    titleB: 'Services',
-    desc: 'Developing Flask, FastAPI, Azure Functions, and API-driven systems for complex workflows.',
-  },
-  {
-    label: 'Production',
-    titleA: 'Live System',
-    titleB: 'Support',
-    desc: 'Owning critical issues, production support, API management, and reliability in live products.',
+    label: '03 / Outcomes',
+    titleA: 'PRODUCTION',
+    titleB: 'OWNERSHIP',
+    desc: 'Primary L3 support owner managing critical production issues across frontend, backend, cloud and AI systems.',
   },
 ];
 
@@ -215,7 +229,7 @@ function HeroFrame() {
         ))}
       </div>
 
-      <p className="hero-bg-word">Full Stack</p>
+      <p className="hero-bg-word">Product</p>
 
       <div className="hero-grid">
         <header className="hero-left">
@@ -240,7 +254,7 @@ function HeroFrame() {
             <div>
               <p>Hi, my name is</p>
               <h1>
-                <span>K</span>aviyarasu <span>J</span>
+                <span>K</span>AVIYARASU <span>J</span>
               </h1>
             </div>
           </div>
@@ -253,7 +267,6 @@ function HeroFrame() {
             <img className="portrait-img portrait-ghost portrait-cyan" src={profilePortrait} alt="" aria-hidden="true" />
             <span className="portrait-scan" aria-hidden="true" />
             <span className="portrait-shine" aria-hidden="true" />
-
           </div>
         </div>
 
@@ -262,15 +275,20 @@ function HeroFrame() {
             <div>
               <span>01</span>
               <h2>
-                Full Stack
+                Product
               </h2>
             </div>
             <div>
               <span>02</span>
               <h2>
-                Develop<span>er</span>
+                Engine<span>er</span>
               </h2>
             </div>
+          </div>
+
+          <div className="hero-subtitle-desc">
+            <h3>PRODUCT ENGINEER | AI WORKFLOW SYSTEMS</h3>
+            <p>Building scalable AI-powered applications using Angular, Python, Azure and workflow-driven architectures.</p>
           </div>
 
           <a className="hero-cta" href={`mailto:${profile.email}`} data-cursor="Email me">
@@ -382,6 +400,27 @@ function ParticleField({ active }) {
   );
 }
 
+function ImpactMetricsSection() {
+  const metrics = [
+    { number: '10+', label: 'Production Applications Delivered' },
+    { number: '80–90%', label: 'Manual Work Reduction' },
+    { number: 'L3', label: 'Production Ownership' },
+  ];
+
+  return (
+    <section className="metrics-bar-section">
+      <div className="metrics-bar-grid">
+        {metrics.map((metric, i) => (
+          <div key={i} className="metric-bar-item" data-cursor="Impact">
+            <span className="metric-num">{metric.number}</span>
+            <span className="metric-label">{metric.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ApartSection() {
   const [active, setActive] = useState(0);
   const rootRef = useRef(null);
@@ -449,32 +488,31 @@ function ApartSection() {
 }
 
 function RealitySection() {
-  const icons = [
-    'Angular', 'Python', 'FastAPI', 'Azure', 'AI Models', 'MongoDB', 'APIM', 'Git',
-    'Postman', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Flask', 'SQL', 'Stripe',
-    'PayPal', 'JSON', 'DevOps', 'Security', 'REST APIs', 'Node.js', 'React', 'Linux',
-    'Webhooks', 'OAuth', 'JWT', 'Agile', 'Jira', 'CI/CD', 'Functions', 'App Services'
+  const metrics = [
+    { value: '10+', label: 'Applications Delivered' },
+    { value: '50+', label: 'Documents Processed Daily' },
+    { value: '80–90%', label: 'Efficiency Gain' },
+    { value: '2+', label: 'Years Experience' },
   ];
 
   return (
-    <section id="skills" className="reality-section" data-cursor="Move mouse">
+    <section id="reality" className="reality-section" data-cursor="Move mouse">
       <div className="reality-mask">
         <img src={techVisualSheet} alt="" />
-        {icons.map((icon, index) => {
-          const col = index % 8;
-          const row = Math.floor(index / 8);
-          const top = 10 + row * 22;
-          const left = 3 + col * 12 + (row % 2 === 0 ? 0 : 6);
-          return (
-            <span key={icon} style={{ '--i': index, left: `${left}%`, top: `${top}%` }}>
-              {icon}
-            </span>
-          );
-        })}
       </div>
-      <h2>
-        <span>Bring</span> your logic into production
-      </h2>
+      <div className="reality-content">
+        <h2>
+          <span>Bring</span> your logic into production
+        </h2>
+        <div className="reality-metrics-grid">
+          {metrics.map((m, idx) => (
+            <PremiumGlowCard key={idx} className="reality-metric-card">
+              <span className="metric-val">{m.value}</span>
+              <span className="metric-lbl">{m.label}</span>
+            </PremiumGlowCard>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -519,19 +557,16 @@ function ManifestoSection() {
         <span>The</span> Manifesto
       </h2>
       <div className="manifesto-slider">
-        {manifesto.map(([number, lineA, lineB, imgPath], index) => (
-          <article key={number} className="manifesto-slide" data-cursor="Scroll">
+        {manifesto.map((slide, index) => (
+          <article key={slide.number} className="manifesto-slide" data-cursor="Scroll">
             <div className="manifesto-image" style={{ '--index': index }}>
-              <img src={imgPath} alt={lineA} />
-              <span>{lineA}</span>
+              <img src={slide.img} alt={slide.title} />
+              <span>{slide.number}</span>
             </div>
             <div className="manifesto-copy">
-              <small>{number}</small>
-              <h3>
-                {lineA}
-                <br />
-                {lineB}
-              </h3>
+              <small>{slide.number}</small>
+              <h3>{slide.title}</h3>
+              <p className="manifesto-desc">{slide.desc}</p>
             </div>
           </article>
         ))}
@@ -571,40 +606,11 @@ function PremiumGlowCard({ children, className = "" }) {
   );
 }
 
-function ProfileDetails() {
+function ExperienceSection() {
   const skillList = skills.flatMap((skill) => skill.items);
-  const [status, setStatus] = useState('');
-  const formRef = useRef(null);
-
-  /*
-  const sendEmail = async (event) => {
-    event.preventDefault();
-    const configured =
-      import.meta.env.VITE_EMAILJS_SERVICE_ID && import.meta.env.VITE_EMAILJS_TEMPLATE_ID && import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (!configured) {
-      setStatus('EmailJS keys are not configured yet. Use .env.example to connect this form.');
-      return;
-    }
-
-    try {
-      setStatus('Sending...');
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-      );
-      formRef.current.reset();
-      setStatus('Message sent.');
-    } catch {
-      setStatus('Message failed. Please email directly.');
-    }
-  };
-  */
 
   return (
-    <section className="details-section">
+    <section id="experience" className="details-section">
       <div>
         <h2>
           Full-stack product engineer focused on <span>Angular, Python, Azure, and AI.</span>
@@ -645,15 +651,59 @@ function ProfileDetails() {
           ))}
         </div>
       </aside>
-      {/*
-      <form ref={formRef} className="replica-form" onSubmit={sendEmail}>
-        <input name="from_name" placeholder="Name" required />
-        <input name="reply_to" type="email" placeholder="Email" required />
-        <textarea name="message" placeholder="Message" rows="4" required />
-        <button type="submit">Send Message</button>
-        {status && <p>{status}</p>}
-      </form>
-      */}
+    </section>
+  );
+}
+
+function SkillsSection() {
+  return (
+    <section id="skills" className="skills-section">
+      <h2 className="section-heading">
+        <span>Technical</span> Skills
+      </h2>
+      <div className="skills-grid">
+        {skills.map((cat) => (
+          <PremiumGlowCard key={cat.group} className="skill-group-card">
+            <h3>{cat.group}</h3>
+            <ul>
+              {cat.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </PremiumGlowCard>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function ProjectsSection() {
+  return (
+    <section id="projects" className="projects-section">
+      <h2 className="section-heading">
+        <span>Featured</span> Projects
+      </h2>
+      <div className="projects-grid">
+        {featuredProjects.map((proj, idx) => (
+          <PremiumGlowCard key={idx} className="project-card">
+            <div className="project-card-header">
+              <span>Project #{idx + 1}</span>
+            </div>
+            <h3>{proj.title}</h3>
+            
+            <div className="project-impact-box">
+              <span className="impact-label">IMPACT</span>
+              <p className="impact-value">{proj.impact}</p>
+            </div>
+            
+            <div className="project-tech">
+              {proj.tech.map((t) => (
+                <span key={t} className="tech-tag">{t}</span>
+              ))}
+            </div>
+          </PremiumGlowCard>
+        ))}
+      </div>
     </section>
   );
 }
@@ -863,11 +913,13 @@ export default function App() {
       <Cursor />
       <main className="replica-site">
         <LoaderHero />
+        <ImpactMetricsSection />
         <ApartSection />
         <RealitySection />
-        {/* <WorkSection /> */}
         <ManifestoSection />
-        <ProfileDetails />
+        <ExperienceSection />
+        <SkillsSection />
+        <ProjectsSection />
         <Footer />
       </main>
     </>
