@@ -488,13 +488,6 @@ function ApartSection() {
 }
 
 function RealitySection() {
-  const metrics = [
-    { value: '10+', label: 'Applications Delivered' },
-    { value: '50+', label: 'Documents Processed Daily' },
-    { value: '80–90%', label: 'Efficiency Gain' },
-    { value: '2+', label: 'Years Experience' },
-  ];
-
   return (
     <section id="reality" className="reality-section" data-cursor="Move mouse">
       <div className="reality-mask">
@@ -504,14 +497,6 @@ function RealitySection() {
         <h2>
           <span>Bring</span> your logic into production
         </h2>
-        <div className="reality-metrics-grid">
-          {metrics.map((m, idx) => (
-            <PremiumGlowCard key={idx} className="reality-metric-card">
-              <span className="metric-val">{m.value}</span>
-              <span className="metric-lbl">{m.label}</span>
-            </PremiumGlowCard>
-          ))}
-        </div>
       </div>
     </section>
   );
