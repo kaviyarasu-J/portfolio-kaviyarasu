@@ -13,6 +13,7 @@ import manifestoImg2 from './assets/manifesto-2.png';
 import manifestoImg3 from './assets/manifesto-3.png';
 import manifestoImg4 from './assets/manifesto-4.png';
 import { certifications, education, experience, featuredProjects, profile, projects, skills } from './data/portfolio';
+import AiAssistant from './components/AiAssistant';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -135,37 +136,79 @@ function Cursor() {
       }
     };
 
-    const enter = (event) => {
-      currentLabel = event.currentTarget.getAttribute('data-cursor');
-      ringRef.current.querySelector('span').textContent = currentLabel || '';
-      gsap.to(ringRef.current, { width: currentLabel ? 160 : 64, height: 42, borderRadius: 999, background: 'rgba(0,0,0,0.28)' });
+    let activeCursorEl = null;
+
+    const handleMouseOver = (event) => {
+      const target = event.target;
       
-      if (currentLabel === 'Move mouse') {
-        gsap.to(ringRef.current.querySelector('span'), { opacity: 1, duration: 0.2 });
-      } else {
-        gsap.to(ringRef.current.querySelector('span'), { opacity: currentLabel ? 1 : 0, duration: 0.2 });
+      // Hide custom cursor inside the AI assistant panel or FAB button
+      if (target.closest('.ai-chat-panel') || target.closest('.ai-fab')) {
+        gsap.to([ringRef.current, dotRef.current], { opacity: 0, scale: 0, duration: 0.15 });
+        return;
+      }
+
+      // Handle inputs/textareas: fade out custom cursor
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+        gsap.to([ringRef.current, dotRef.current], { opacity: 0, scale: 0, duration: 0.15 });
+        return;
+      }
+
+      // Handle elements with data-cursor (event delegation)
+      const cursorTarget = target.closest('[data-cursor]');
+      if (cursorTarget && cursorTarget !== activeCursorEl) {
+        activeCursorEl = cursorTarget;
+        const label = cursorTarget.getAttribute('data-cursor');
+        currentLabel = label;
+        ringRef.current.querySelector('span').textContent = label || '';
+        gsap.to(ringRef.current, { width: label ? 160 : 64, height: 42, borderRadius: 999, background: 'rgba(0,0,0,0.28)' });
+        
+        if (label === 'Move mouse') {
+          gsap.to(ringRef.current.querySelector('span'), { opacity: 1, duration: 0.2 });
+        } else {
+          gsap.to(ringRef.current.querySelector('span'), { opacity: label ? 1 : 0, duration: 0.2 });
+        }
       }
     };
 
-    const leave = () => {
-      currentLabel = '';
-      clearTimeout(moveTimer);
-      gsap.to(ringRef.current, { width: 42, height: 42, background: 'transparent' });
-      gsap.to(ringRef.current.querySelector('span'), { opacity: 0, duration: 0.2 });
+    const handleMouseOut = (event) => {
+      const target = event.target;
+      
+      // Restore custom cursor when leaving the AI assistant panel or FAB button
+      if (target.closest('.ai-chat-panel') || target.closest('.ai-fab')) {
+        const related = event.relatedTarget;
+        if (!related || (!related.closest('.ai-chat-panel') && !related.closest('.ai-fab'))) {
+          gsap.to([ringRef.current, dotRef.current], { opacity: 1, scale: 1, duration: 0.15 });
+        }
+        return;
+      }
+
+      // Handle inputs/textareas: fade in custom cursor when leaving
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+        gsap.to([ringRef.current, dotRef.current], { opacity: 1, scale: 1, duration: 0.15 });
+        return;
+      }
+
+      const cursorTarget = target.closest('[data-cursor]');
+      if (cursorTarget && cursorTarget === activeCursorEl) {
+        const related = event.relatedTarget;
+        if (!related || !cursorTarget.contains(related)) {
+          activeCursorEl = null;
+          currentLabel = '';
+          clearTimeout(moveTimer);
+          gsap.to(ringRef.current, { width: 42, height: 42, background: 'transparent' });
+          gsap.to(ringRef.current.querySelector('span'), { opacity: 0, duration: 0.2 });
+        }
+      }
     };
 
     window.addEventListener('mousemove', move);
-    document.querySelectorAll('[data-cursor]').forEach((item) => {
-      item.addEventListener('mouseenter', enter);
-      item.addEventListener('mouseleave', leave);
-    });
+    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mouseout', handleMouseOut);
 
     return () => {
       window.removeEventListener('mousemove', move);
-      document.querySelectorAll('[data-cursor]').forEach((item) => {
-        item.removeEventListener('mouseenter', enter);
-        item.removeEventListener('mouseleave', leave);
-      });
+      window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('mouseout', handleMouseOut);
     };
   }, []);
 
@@ -896,6 +939,7 @@ export default function App() {
   return (
     <>
       <Cursor />
+      <AiAssistant />
       <main className="replica-site">
         <LoaderHero />
         <ImpactMetricsSection />
