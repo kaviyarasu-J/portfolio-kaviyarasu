@@ -80,7 +80,7 @@ export const projects = [
 export const featuredProjects = [
   {
     title: 'AI Underwriting Automation Platform',
-    impact: '80–90% reduction in manual work',
+    impact: '50–60% reduction in manual work',
     tech: ['Angular', 'Flask', 'Azure', 'MongoDB'],
   },
   {
@@ -101,11 +101,12 @@ export const experience = [
     company: 'Bluepond.ai',
     duration: 'Aug 2024 – Present',
     details: [
-      'Built AI workflow platforms reducing manual effort by 80–90%',
-      'Developed Angular-based dashboards, dynamic forms, role-based workflows, AI response rendering, and third-party integrations across 10+ production applications',
-      'Built scalable backend services using Flask/FastAPI for asynchronous workflows, document processing, and LLM response handling',
-      'Worked on Azure Functions and centralized platform systems enabling management of multiple applications from a single platform',
-      'Led L3 production support, handling critical issues across frontend, backend, cloud, and AI systems',
+      'Built AI-driven underwriting automation platforms that streamlined document processing and reduced manual effort by 50–60%.',
+      'Developed Angular dashboards, dynamic forms, role-based workflows, and AI-driven UI experiences using TypeScript, RxJS, PrimeNG, and Angular Material.',
+      'Built scalable backend services using Python, Flask, and FastAPI for asynchronous workflows, Excel/PDF processing, large JSON transformations, and LLM response handling.',
+      'Integrated LLM pipelines to transform model outputs into structured JSON and dynamic, editable Angular workflows.',
+      'Worked on Azure Functions and centralized platform systems for workflow, logging, environment, and application-level operations.',
+      'Provided L3 production support across frontend, backend, Azure cloud, and AI layers, including critical debugging and deployments.',
     ],
   },
 ];

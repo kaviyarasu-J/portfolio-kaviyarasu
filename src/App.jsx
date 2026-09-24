@@ -50,7 +50,7 @@ const differentiators = [
     label: '01 / Outcomes',
     titleA: 'AI WORKFLOW',
     titleB: 'AUTOMATION',
-    desc: 'Reduced manual underwriting effort by 80–90% through LLM-powered workflow automation and structured output pipelines.',
+    desc: 'Reduced manual underwriting effort by 50–60% through LLM-powered workflow automation and structured output pipelines.',
   },
   {
     label: '02 / Outcomes',
@@ -402,9 +402,9 @@ function ParticleField({ active }) {
 
 function ImpactMetricsSection() {
   const metrics = [
-    { number: '10+', label: 'Production Applications Delivered' },
-    { number: '80–90%', label: 'Manual Work Reduction' },
-    { number: 'L3', label: 'Production Ownership' },
+    { number: 'AI + FULL STACK', label: 'PRODUCT ENGINEERING' },
+    { number: '50–60%', label: 'MANUAL EFFORT REDUCTION' },
+    { number: 'L3', label: 'PRODUCTION OWNERSHIP' },
   ];
 
   return (
