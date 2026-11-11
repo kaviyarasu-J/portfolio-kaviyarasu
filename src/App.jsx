@@ -896,6 +896,18 @@ export default function App() {
   return (
     <>
       <Cursor />
+      <a
+        href="/cinematic-portofilo/index.html"
+        className="cinematic-switch-banner"
+        data-cursor="Cinematic"
+        title="Experience Cinematic WebGL Portfolio"
+      >
+        <span className="switch-glow-ring" />
+        <span className="switch-dot-pulse" />
+        <span className="switch-badge">3D FILM</span>
+        <span className="switch-title">Cinematic Experience</span>
+        <ArrowUpRight size={15} className="switch-arrow" />
+      </a>
       <main className="replica-site">
         <LoaderHero />
         <ImpactMetricsSection />
