@@ -1,0 +1,411 @@
+/* ==========================================================================
+   The finale — the closing shot.
+   Deep black + dark red + crimson + cream. The furnace canvas sits behind a
+   giant GIREESH set in real type (Anton, stretched to the reference's
+   ultra-tall poster proportions, wearing the extracted grunge), the man's
+   canvas rides in front of the title, and the editorial captions + the quiet
+   functional row hold the edges.
+   ========================================================================== */
+
+/* Two frames of one closing scene: the pinned stage holds frame 1 (the
+   GIREESH composition) while the extra scroll room drives frame 2 sliding in
+   from the left over it. */
+.fin {
+  position: relative;
+  height: 120svh;
+  background: #000;
+}
+
+.fin__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  background: #000;
+}
+
+.fin__stage1 {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+.fin__frame1Img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  display: block;
+  user-select: none;
+  z-index: 1;
+}
+
+.fin__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(6, 4, 7, 0.65) 0%, rgba(2, 2, 4, 0.90) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Scene 6: Clean Typographic "Let's Connect" — no glass card, pure
+   text-and-icon design directly over the image, left side only.
+   The man by the car stays fully visible on the right.
+   -------------------------------------------------------------------------- */
+.fin__connect {
+  position: absolute;
+  top: 50%;
+  left: clamp(32px, 6vw, 100px);
+  transform: translateY(-50%) translate3d(-28px, 0, 0);
+  z-index: 6;
+  width: clamp(280px, 36vw, 480px);
+  max-width: calc(55vw - 48px);
+  opacity: 0;
+  transition: opacity 1.3s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: auto;
+}
+
+.fin.is-caps .fin__connect,
+.fin.is-set .fin__connect {
+  opacity: 1;
+  transform: translateY(-50%) translate3d(0, 0, 0);
+}
+
+/* Eyebrow — light red pill with pulsing red dot */
+.fin__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  font-family: var(--ui);
+  font-size: clamp(8px, 0.72vw, 11px);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #ff857a;
+}
+
+.fin__eyebrowDot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff3b30;
+  box-shadow: 0 0 12px #ff3b30, 0 0 24px rgba(255, 59, 48, 0.6);
+  animation: finDotPulse 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes finDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* Main heading — cinematic light red & crimson glow matching the finale art */
+.fin__h2 {
+  margin: 0 0 14px;
+  font-family: var(--ui);
+  font-size: clamp(44px, 6.5vw, 100px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  color: #fff0ee;
+  text-shadow:
+    0 0 50px rgba(255, 68, 56, 0.45),
+    0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.fin__h2 em {
+  font-style: italic;
+  color: #ff5238;
+  text-shadow:
+    0 0 35px rgba(255, 68, 56, 0.75),
+    0 0 70px rgba(179, 39, 29, 0.55),
+    0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+/* Sub-line */
+.fin__sub {
+  margin: 0 0 28px;
+  font-family: var(--ui);
+  font-size: clamp(10px, 0.88vw, 13px);
+  line-height: 1.65;
+  letter-spacing: 0.08em;
+  color: rgba(255, 222, 216, 0.76);
+  max-width: 36ch;
+}
+
+/* Contacts list */
+.fin__contacts {
+  display: grid;
+  gap: 14px;
+}
+
+.fin__clink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: rgba(255, 230, 225, 0.82);
+  font-family: var(--ui);
+  font-size: clamp(11px, 0.9vw, 14px);
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  pointer-events: auto;
+}
+
+.fin__clink:hover,
+.fin__clink:focus-visible {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 82, 56, 0.75), 0 0 40px rgba(255, 68, 56, 0.45);
+  transform: translateX(5px);
+  outline: none;
+}
+
+.fin__clink--hot {
+  color: #ff5238;
+  font-weight: 600;
+}
+
+.fin__clink--hot:hover {
+  color: #ff857a;
+  text-shadow: 0 0 24px rgba(255, 82, 56, 0.85);
+}
+
+.fin__clinkIcon {
+  font-size: 16px;
+  flex-shrink: 0;
+  width: 22px;
+  text-align: center;
+  color: #ff6b5e;
+  opacity: 0.9;
+}
+
+/* Thin rule between icon and text */
+.fin__clinkTxt {
+  position: relative;
+  padding-left: 14px;
+}
+
+.fin__clinkTxt::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background: rgba(255, 82, 56, 0.45);
+}
+
+@media (max-width: 768px) {
+  .fin__connect {
+    left: 16px;
+    right: 16px;
+    top: auto;
+    bottom: 80px;
+    max-width: none;
+    width: auto;
+    transform: none;
+  }
+  .fin.is-caps .fin__connect,
+  .fin.is-set .fin__connect {
+    transform: none;
+  }
+  .fin__h2 { font-size: clamp(36px, 10vw, 56px); }
+}
+
+#finBack,
+#finMan {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+/* dims frame 1 as frame 2 advances over it */
+.fin__dim {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Frame 2 — the supplied still, full-bleed, entering from the LEFT under
+   scroll control (boot6 writes its transform). Its leading edge throws a
+   soft shadow onto frame 1, and a grain veil keeps it in the film's stock.
+   -------------------------------------------------------------------------- */
+.fin__frame2 {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  margin: 0;
+  transform: translate3d(-104%, 0, 0);
+  will-change: transform, filter;
+  pointer-events: none;
+  box-shadow: 42px 0 110px rgba(0, 0, 0, 0.62);
+  background: #0a0203;
+}
+.fin__frame2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+  display: block;
+  user-select: none;
+}
+.fin__frame2::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../../public/tex/grain.png') repeat;
+  background-size: 340px;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Editorial captions — cream letterspaced, red punctuation.
+   -------------------------------------------------------------------------- */
+
+.f-cap {
+  position: absolute;
+  margin: 0;
+  z-index: 4;
+  font-family: var(--ui);
+  font-size: clamp(8px, 0.72vw, 12px);
+  font-weight: 400;
+  line-height: 2.1;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(233, 220, 208, 0.72);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease calc(var(--li, 0) * 0.15s),
+              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--li, 0) * 0.15s);
+  pointer-events: none;
+}
+.fin.is-caps .f-cap { opacity: 1; transform: none; }
+
+.f-cap--tl {
+  top: clamp(22px, 6vh, 58px);
+  left: clamp(24px, 3.6vw, 62px);
+  padding-left: 1.2em;
+  border-left: 2px solid #b3271d;
+}
+.f-cap--quote {
+  top: 38%;
+  left: clamp(24px, 3.2vw, 56px);
+  font-size: clamp(10px, 0.92vw, 15px);
+  letter-spacing: 0.34em;
+  color: rgba(240, 230, 220, 0.88);
+}
+.f-cap--quote::after {
+  content: '';
+  display: block;
+  width: 2.1em;
+  height: 2px;
+  margin-top: 1.5em;
+  background: #b3271d;
+}
+.f-cap--blw {
+  bottom: clamp(64px, 11vh, 110px);
+  left: clamp(24px, 3.6vw, 62px);
+  padding-left: 1.2em;
+  border-left: 2px solid #b3271d;
+}
+.f-cap--tr {
+  top: clamp(22px, 6vh, 58px);
+  right: clamp(24px, 3.6vw, 62px);
+}
+.f-cap--tr::after,
+.f-cap--br::after {
+  content: '';
+  display: block;
+  width: 1.8em;
+  height: 2px;
+  margin-top: 1.2em;
+  background: #b3271d;
+}
+.f-cap--br {
+  bottom: clamp(64px, 11vh, 110px);
+  right: clamp(24px, 3.6vw, 62px);
+}
+
+/* --------------------------------------------------------------------------
+   The functional row — a real footer, whispering. Sits on the bottom edge
+   without breaking the frame.
+   -------------------------------------------------------------------------- */
+
+.fin__bar {
+  position: absolute;
+  z-index: 7;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px clamp(20px, 3.6vw, 62px) 16px;
+  font-family: var(--ui);
+  font-size: clamp(8px, 0.66vw, 11px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(216, 186, 174, 0.5);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fin.is-bar .fin__bar { opacity: 1; transform: none; }
+
+.fin__bar a {
+  color: rgba(233, 220, 208, 0.7);
+  text-decoration: none;
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+.fin__bar a:hover,
+.fin__bar a:focus-visible {
+  color: #f4ecdd;
+  text-shadow: 0 0 14px rgba(220, 60, 40, 0.55);
+  outline: none;
+}
+.fin__soc {
+  display: flex;
+  gap: 2.4em;
+}
+.fin__c { font-size: inherit; letter-spacing: 0.24em; }
+
+/* --------------------------------------------------------------------------
+   Portrait + fallbacks
+   -------------------------------------------------------------------------- */
+
+.fin.is-portrait .f-cap--tr,
+.fin.is-portrait .f-cap--tl,
+.fin.is-portrait .f-cap--blw { display: none; }
+.fin.is-portrait .f-cap--quote { top: auto; bottom: 24vh; }
+.fin.is-portrait .fin__bar {
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+
+.fin.is-fallback #finBack,
+.fin.is-fallback #finMan { display: none; }
+.fin.is-fallback {
+  background: #000 url('../../public/fin/plate.jpg') center / cover no-repeat;
+}
+.fin.is-set .f-cap,
+.fin.is-set .fin__bar { opacity: 1; transform: none; filter: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .f-cap, .fin__bar { transition-duration: 0.01ms; transition-delay: 0s; }
+}

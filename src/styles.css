@@ -2113,3 +2113,118 @@ button {
   }
 }
 
+/* ==========================================================================
+   Cinematic Portfolio Switcher Button
+   ========================================================================== */
+
+.cinematic-switch-banner {
+  position: fixed;
+  top: clamp(16px, 3vh, 28px);
+  right: clamp(16px, 3.5vw, 42px);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 12px;
+  background: rgba(10, 10, 10, 0.78);
+  border: 1px solid rgba(222, 27, 28, 0.5);
+  border-radius: 9999px;
+  color: #fff;
+  text-decoration: none;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 0 24px rgba(222, 27, 28, 0.22), inset 0 0 12px rgba(222, 27, 28, 0.08);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: none;
+}
+
+.cinematic-switch-banner:hover {
+  background: rgba(22, 10, 10, 0.92);
+  border-color: #ff2a2b;
+  box-shadow: 0 0 35px rgba(255, 42, 43, 0.55), inset 0 0 20px rgba(255, 42, 43, 0.2);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.switch-glow-ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 42, 43, 0.4), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.cinematic-switch-banner:hover .switch-glow-ring {
+  opacity: 1;
+}
+
+.switch-dot-pulse {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff2a2b;
+  box-shadow: 0 0 10px #ff2a2b;
+}
+
+.switch-dot-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(255, 42, 43, 0.6);
+  animation: switch-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes switch-ping {
+  75%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.switch-badge {
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: rgba(222, 27, 28, 0.25);
+  border: 1px solid rgba(222, 27, 28, 0.6);
+  color: #ff8585;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.switch-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f3f4f6;
+  white-space: nowrap;
+}
+
+.switch-arrow {
+  color: #ff4d4f;
+  transition: transform 0.3s ease;
+}
+
+.cinematic-switch-banner:hover .switch-arrow {
+  transform: translate(2px, -2px);
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .switch-badge {
+    display: none;
+  }
+  .switch-title {
+    font-size: 11px;
+  }
+  .cinematic-switch-banner {
+    padding: 6px 12px 6px 10px;
+    gap: 8px;
+  }
+}
+

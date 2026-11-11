@@ -1,0 +1,15 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/cinematic-portofilo",
+      "destination": "/cinematic-portofilo/index.html"
+    },
+    {
+      "source": "/cinematic-portfolio",
+      "destination": "/cinematic-portofilo/index.html"
+    }
+  ]
+}
